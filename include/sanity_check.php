@@ -39,7 +39,7 @@
 				array_push($errors, "Please enable at least one authentication module via PLUGINS constant in config.php");
 			}
 
-			if (function_exists('posix_getuid') && posix_getuid() == 0) {
+			if (!defined('IGNORE_ROOT_CHECK') && function_exists('posix_getuid') && posix_getuid() == 0) {
 				array_push($errors, "Please don't run this script as root.");
 			}
 
